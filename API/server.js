@@ -4,14 +4,14 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-app.post('/process_post', function (req, res) {
-    var response = {
-       uname:req.body.uname,
-       pass:req.body.pass
-    };
-    console.log(response);
-    res.end(JSON.stringify(response));
- })
+app.post('/login', (req, res) =>  {
+
+    var uname = req.body.uname;
+    var pass = req.body.pass;
+    if(uname == 'Mansi_12' && pass == 'Mansi@123'){
+        res.end("Login Successful!");
+    }
+ });
 
 
 var server = app.listen(8080, function() {
