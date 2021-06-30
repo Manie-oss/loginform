@@ -13,7 +13,7 @@ class App extends Component {
 
   submitForm = (event) =>  {
     console.log(this.state);
-    axios.post('http://localhost:8080/login', this.state)
+    axios.post('localhost:8080/login', this.state)
     .then(response => {
       console.log(response)
     }) 
