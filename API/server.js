@@ -1,15 +1,20 @@
 var express = require("express");
+var cors = require('cors')
 var app = express();
 const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
+app.use(cors())
 
 app.post('/login', (req, res) =>  {
 
-    var uname = req.body.uname;
-    var pass = req.body.pass;
+    var uname = req.body.name;
+    var pass = req.body.password;
     if(uname == 'Mansi_12' && pass == 'Mansi@123'){
         res.end("Login Successful!");
+    }
+    else{
+        res.end("incorrect username or password!")
     }
  });
 

@@ -14,9 +14,7 @@ class App extends Component {
   submitForm = (event) =>  {
     console.log(this.state);
     axios.post('http://localhost:8080/login', this.state)
-    .then(response => {
-      console.log(response)
-    }) 
+    .then(response => this.setState(() => ({ data: response.data })))
     .catch(error => {
       console.log(error)
     })
@@ -31,7 +29,8 @@ class App extends Component {
           <input type="password" id = "pass" name="pass" placeholder = "Password" onChange = {(event) => this.setState({ ...this.setState, password: event.target.value})}/><br />
         </form>
         <button type = "button" onClick = { this.submitForm }>LogIn</button>
-    </div>
+        <div>{ this.state.data }</div> 
+      </div>
     );
   }
 }
